@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This is an automatically generated file. -->
+<Chapter Label="Chapter_Commands_for_paramodifications">
+<Heading>Commands for paramodifications</Heading>
+
+<Section Label="Chapter_Commands_for_paramodifications_Section_Prerequisites">
+<Heading>Prerequisites</Heading>
+
+ The &GAP; packages <Package>UnitalSZ</Package> and <Package>GRAPE</Package> are necessary. 
+<Example><![CDATA[
+gap> LoadPackage( "UnitalSZ", false );
+gap> LoadPackage( "grape", false );
+]]></Example>
+
+
+ You can use the info class <C>InfoParamod</C> to get extra information.
+<Example><![CDATA[
+gap> DeclareInfoClass( "InfoParamod" ); 
+]]></Example>
+
+
+<ManSection>
+  <Func Arg="bls, k, gr" Name="AllRegularBlockColorings" />
+ <Returns>the list of block colorings of the set <A>bls</A> of blocks, with <A>k</A>   colors and color classes of size <C>|bls|/k</C>. The colorings are returned 
+   as GAP transformation objects from <C>[1..Size(bls)]</C> to <C>[1..k]</C>.
+</Returns>
+ <Description>
+  Let <Math>P</Math> be a set, <Math>B</Math> a set of subsets (called <E>blocks</E>), and <Math>k</Math> a positive integer. 
+  The map <Math>\chi:B\to \{1,\ldots,k\}</Math> is a block coloring if <Math>\chi(b)=\chi(b')</Math> implies
+  <Math>b\cap b'=\emptyset</Math> for any <Math>b,b' \in B</Math>. The block coloring in <E>regular</E>, if
+  each color class has size <Math>|B|/k</Math>. The last argument <A>gr</A> must be a block
+  preserving permutation of the set <Math>P</Math> of points. 
+ </Description>
+</ManSection>
+
+
+</Section>
+
+
+<Section Label="Chapter_Commands_for_paramodifications_Section_Paramodifications">
+<Heading>Paramodifications</Heading>
+
+<ManSection>
+  <Func Arg="u, b, chi" Name="ParamodificationOfUnital" />
+ <Returns>the paramodification of the unital <A>u</A> with respect to the   block <A>b</A> and regular block coloring <A>chi</A> with <C>|b|</C> colors.
+</Returns>
+ <Description>
+The coloring <A>chi</A> must be given as a GAP transformation
+  object from <C>[1..q^2*(q^2-q+1)]</C> to <C>[1..q+1]</C>, where <C>q</C> is 
+  the order of <A>u</A>. This function has a slightly faster non-checking version 
+  <C>ParamodificationOfUnitalNC</C>. 
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Func Arg="u, b" Name="ParamodificationsOfUnitalWithBlock" />
+ <Returns>all paramodifications of the unital <A>u</A> with respect to the block    <A>b</A>. The results are reduced up to isomorphism of abstract unitals. 
+</Returns>
+ <Description>
+<P/>
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Func Arg="u" Name="AllParamodificationsOfUnital" />
+ <Returns>all paramodifications of the unital <A>u</A>.   The results are reduced up to isomorphism of abstract unitals. 
+</Returns>
+ <Description>
+<P/>
+ </Description>
+</ManSection>
+
+
+</Section>
+
+
+<Section Label="Chapter_Commands_for_paramodifications_Section_Implementations">
+<Heading>Implementations</Heading>
+
+<Subsection Label="Chapter_Commands_for_paramodifications_Section_Implementations_Subsection_Regular_block_colorings">
+<Heading>Regular block colorings</Heading>
+
+<Example><![CDATA[
+gap> InstallGlobalFunction( AllRegularBlockColorings, function( bls, nr_colors, gr )
+> 	local Gamma, complete_subgraphs, graph_of_cliques, colorings, ret, new_blocks, c, c_vec, i, j;
+gap> 	# construct the line graph and its cliques
+> 	Gamma := Graph( gr, bls, OnSets,
+>         	function( x, y ) return x <> y and Intersection( x, y ) = [];
+gap> 	end );
+gap> 	complete_subgraphs := CompleteSubgraphs( Gamma, Size(bls)/nr_colors, 1);;
+gap> 	complete_subgraphs := Union( List( complete_subgraphs,
+> 				x -> Orbit( AutomorphismGroup( Gamma ), x, OnSets ) ) );
+gap> 	Info( InfoParamod, 3, "cliques of the line graph computed..." );
+gap> 	# construct the graph of cliques and its cliques
+> 	graph_of_cliques := Graph( Gamma.group, complete_subgraphs, OnSets,
+> 				function( x, y ) return x <> y and Intersection( x, y ) = [];
+gap> 				end );
+gap> 	colorings := CompleteSubgraphs( graph_of_cliques, nr_colors, 1 );
+gap> 	Info( InfoParamod, 3, Size( colorings ), " block colorings computed..." );
+gap> 	# construct colorings
+> 	ret := [];
+gap> 	for c in colorings do
+> 		c_vec:=0*[1..Size(bls)];
+gap> 		for i in [1..nr_colors] do 
+> 			for j in VertexNames( graph_of_cliques )[c[i]] do
+> 				c_vec[ Position( bls, VertexNames( Gamma )[j] ) ] := i;
+gap> 			od;
+gap> 		od;
+gap> 		Add(ret, Transformation(c_vec));
+gap> 	od;
+gap> 	return ret;
+gap> end );
+]]></Example>
+
+
+</Subsection>
+
+
+<Subsection Label="Chapter_Commands_for_paramodifications_Section_Implementations_Subsection_Paramodifications">
+<Heading>Paramodifications</Heading>
+
+<Example><![CDATA[
+gap> InstallGlobalFunction( ParamodificationOfUnitalNC, function( u, b, chi )
+> 	local Cb, n_Cb, C_star_b, intact_blks, B_star;
+gap> 	Cb := Filtered( BlocksOfUnital( u ),
+> 		x -> Size( Intersection( x, b ) ) = 1 );
+gap> 	n_Cb := Length( Cb );
+gap> 	C_star_b := List( [1..n_Cb],
+> 		i -> Union( Difference( Cb[i], b ), [ b[i^chi] ] ) );
+gap> 	intact_blks := Difference( BlocksOfUnital( u ), Cb );
+gap> 	B_star := Union( intact_blks, C_star_b );
+gap> 	return AbstractUnitalByDesignBlocks( B_star );
+gap> end );
+]]></Example>
+
+
+<Example><![CDATA[
+gap> InstallGlobalFunction( ParamodificationOfUnital, function( u, b, chi )
+> 	local Cb;
+gap> 	if not b in BlocksOfUnital( u ) then 
+> 		Error( "argument 2 must be a block of argument 1");
+gap> 	fi;
+gap> 	Cb := Filtered( BlocksOfUnital( u ),
+>                    x -> Size( Intersection( x, b ) ) = 1 );
+gap> 	Cb := List( Cb, x -> Difference( x, b) );
+gap> 	if not ForAll( Combinations( [1..Size(Cb)], 2 ), p ->
+> 			Intersection(Cb{p})=[] or 
+> 			(p[1]^chi<>p[2]^chi)
+> 		) then Error( "argument 3 is not a proper block coloring" ); 
+gap> 	fi;
+gap> 	return ParamodificationOfUnitalNC( u, b, chi );
+gap> end );
+]]></Example>
+
+
+</Subsection>
+
+
+<Subsection Label="Chapter_Commands_for_paramodifications_Section_Implementations_Subsection_Paramodifications_with_respect_to_a_block">
+<Heading>Paramodifications with respect to a block</Heading>
+
+<Example><![CDATA[
+gap> InstallGlobalFunction( ParamodificationsOfUnitalWithBlock, 
+> function( u, b )
+> 	local q, Cb, b_stab, new_unitals, all, allchibmod, i, isom_class, colorings;
+gap> 	if not b in BlocksOfUnital( u ) then 
+> 		Error( "argument 2 must be a block of argument 1");
+gap> 	fi;
+gap> 	q := Order( u );
+gap> 	Cb := Filtered( BlocksOfUnital( u ),
+> 		x -> Size( Intersection( x, b ) ) = 1 );
+gap> 	# Important: keep the order from BlocksOfUnital
+> 	Cb := List( Cb, x -> Difference( x, b ) ); 
+gap> 	# compute all colorings
+> 	b_stab := Stabilizer( AutomorphismGroup( u ), b, OnSets );
+gap> 	colorings := AllRegularBlockColorings( Cb, q + 1, b_stab );
+gap> 	Info( InfoParamod, 1, Size( colorings ), " coloring(s) for the given unital-block pair computed..." );
+gap> 	new_unitals := List( colorings, c -> ParamodificationOfUnitalNC( u, b, c ) );
+gap> 	# reduction up to isomorphism
+> 	all := [1..Length( new_unitals )];
+gap> 	allchibmod := [];
+gap> 	while all <> [] do
+> 		i := Remove( all );
+gap> 		isom_class := Filtered( all, x -> Isomorphism( new_unitals[i],
+> 			new_unitals[x] ) <> fail ) ;
+gap> 		all := Difference( all, isom_class );
+gap> 		Add( allchibmod, new_unitals[i] );
+gap> 	od;
+gap> 	return allchibmod;
+gap> end );
+]]></Example>
+
+
+</Subsection>
+
+
+<Subsection Label="Chapter_Commands_for_paramodifications_Section_Implementations_Subsection_All_paramodifications_of_a_unital">
+<Heading>All paramodifications of a unital</Heading>
+
+<Example><![CDATA[
+gap> InstallGlobalFunction( AllParamodificationsOfUnital, function( u )
+> 	local blocks, rep_blocks, allchibmods, uus, b;
+gap> 	blocks := BlocksOfUnital( u );
+gap> 	rep_blocks := List( Orbits( AutomorphismGroup( u ), blocks, OnSets ),
+> 		      orb -> Representative( orb ) );
+gap> 	Info( InfoParamod, 2, Size( rep_blocks ), " block representatives for the unital computed..." );
+gap> 	allchibmods := [];
+gap> 	for b in rep_blocks do
+> 		uus := ParamodificationsOfUnitalWithBlock( u, b );
+gap> 		uus := Filtered( uus, x -> Isomorphism( x, u ) = fail and
+> 				ForAll( allchibmods, y -> Isomorphism( y, x ) = fail ) );
+gap> 		Append( allchibmods, uus );
+gap> 	od;
+gap> 	return allchibmods;
+gap> end );
+]]></Example>
+
+
+</Subsection>
+
+
+</Section>
+
+
+</Chapter>
+

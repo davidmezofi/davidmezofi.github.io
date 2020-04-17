@@ -1,0 +1,186 @@
+  
+  [1X1 [33X[0;0YCommands for paramodifications[133X[101X
+  
+  
+  [1X1.1 [33X[0;0YPrerequisites[133X[101X
+  
+  [33X[0;0YThe [5XGAP[105X packages [5XUnitalSZ[105X and [5XGRAPE[105X are necessary.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "UnitalSZ", false );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "grape", false );[127X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YYou can use the info class [10XInfoParamod[110X to get extra information.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDeclareInfoClass( "InfoParamod" ); [127X[104X
+  [4X[32X[104X
+  
+  [1X1.1-1 AllRegularBlockColorings[101X
+  
+  [33X[1;0Y[29X[2XAllRegularBlockColorings[102X( [3Xbls[103X, [3Xk[103X, [3Xgr[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ythe  list  of  block  colorings  of  the set [3Xbls[103X of blocks, with [3Xk[103X
+            colors  and  color  classes  of  size  [10X|bls|/k[110X.  The colorings are
+            returned  as  GAP  transformation  objects  from [10X[1..Size(bls)][110X to
+            [10X[1..k][110X.[133X
+  
+  [33X[0;0YLet  [23XP[123X  be  a  set,  [23XB[123X  a  set  of subsets (called [13Xblocks[113X), and [23Xk[123X a positive
+  integer.   The   map   [23X\chi:B\to  \{1,\ldots,k\}[123X  is  a  block  coloring  if
+  [23X\chi(b)=\chi(b')[123X  implies  [23Xb\cap  b'=\emptyset[123X for any [23Xb,b' \in B[123X. The block
+  coloring  in  [13Xregular[113X, if each color class has size [23X|B|/k[123X. The last argument
+  [3Xgr[103X must be a block preserving permutation of the set [23XP[123X of points.[133X
+  
+  
+  [1X1.2 [33X[0;0YParamodifications[133X[101X
+  
+  [1X1.2-1 ParamodificationOfUnital[101X
+  
+  [33X[1;0Y[29X[2XParamodificationOfUnital[102X( [3Xu[103X, [3Xb[103X, [3Xchi[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ythe  paramodification  of the unital [3Xu[103X with respect to the block [3Xb[103X
+            and regular block coloring [3Xchi[103X with [10X|b|[110X colors.[133X
+  
+  [33X[0;0YThe  coloring  [3Xchi[103X  must  be  given  as  a  GAP  transformation  object from
+  [10X[1..q^2*(q^2-q+1)][110X to [10X[1..q+1][110X, where [10Xq[110X is the order of [3Xu[103X. This function has
+  a slightly faster non-checking version [10XParamodificationOfUnitalNC[110X.[133X
+  
+  [1X1.2-2 ParamodificationsOfUnitalWithBlock[101X
+  
+  [33X[1;0Y[29X[2XParamodificationsOfUnitalWithBlock[102X( [3Xu[103X, [3Xb[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Yall paramodifications of the unital [3Xu[103X with respect to the block [3Xb[103X.
+            The results are reduced up to isomorphism of abstract unitals.[133X
+  
+  [1X1.2-3 AllParamodificationsOfUnital[101X
+  
+  [33X[1;0Y[29X[2XAllParamodificationsOfUnital[102X( [3Xu[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Yall  paramodifications of the unital [3Xu[103X. The results are reduced up
+            to isomorphism of abstract unitals.[133X
+  
+  
+  [1X1.3 [33X[0;0YImplementations[133X[101X
+  
+  
+  [1X1.3-1 [33X[0;0YRegular block colorings[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XInstallGlobalFunction( AllRegularBlockColorings, function( bls, nr_colors, gr )[127X[104X
+    [4X[25X>[125X [27X	local Gamma, complete_subgraphs, graph_of_cliques, colorings, ret, new_blocks, c, c_vec, i, j;[127X[104X
+    [4X[25Xgap>[125X [27X	# construct the line graph and its cliques[127X[104X
+    [4X[25X>[125X [27X	Gamma := Graph( gr, bls, OnSets,[127X[104X
+    [4X[25X>[125X [27X        	function( x, y ) return x <> y and Intersection( x, y ) = [];[127X[104X
+    [4X[25Xgap>[125X [27X	end );[127X[104X
+    [4X[25Xgap>[125X [27X	complete_subgraphs := CompleteSubgraphs( Gamma, Size(bls)/nr_colors, 1);;[127X[104X
+    [4X[25Xgap>[125X [27X	complete_subgraphs := Union( List( complete_subgraphs,[127X[104X
+    [4X[25X>[125X [27X				x -> Orbit( AutomorphismGroup( Gamma ), x, OnSets ) ) );[127X[104X
+    [4X[25Xgap>[125X [27X	Info( InfoParamod, 3, "cliques of the line graph computed..." );[127X[104X
+    [4X[25Xgap>[125X [27X	# construct the graph of cliques and its cliques[127X[104X
+    [4X[25X>[125X [27X	graph_of_cliques := Graph( Gamma.group, complete_subgraphs, OnSets,[127X[104X
+    [4X[25X>[125X [27X				function( x, y ) return x <> y and Intersection( x, y ) = [];[127X[104X
+    [4X[25Xgap>[125X [27X				end );[127X[104X
+    [4X[25Xgap>[125X [27X	colorings := CompleteSubgraphs( graph_of_cliques, nr_colors, 1 );[127X[104X
+    [4X[25Xgap>[125X [27X	Info( InfoParamod, 3, Size( colorings ), " block colorings computed..." );[127X[104X
+    [4X[25Xgap>[125X [27X	# construct colorings[127X[104X
+    [4X[25X>[125X [27X	ret := [];[127X[104X
+    [4X[25Xgap>[125X [27X	for c in colorings do[127X[104X
+    [4X[25X>[125X [27X		c_vec:=0*[1..Size(bls)];[127X[104X
+    [4X[25Xgap>[125X [27X		for i in [1..nr_colors] do [127X[104X
+    [4X[25X>[125X [27X			for j in VertexNames( graph_of_cliques )[c[i]] do[127X[104X
+    [4X[25X>[125X [27X				c_vec[ Position( bls, VertexNames( Gamma )[j] ) ] := i;[127X[104X
+    [4X[25Xgap>[125X [27X			od;[127X[104X
+    [4X[25Xgap>[125X [27X		od;[127X[104X
+    [4X[25Xgap>[125X [27X		Add(ret, Transformation(c_vec));[127X[104X
+    [4X[25Xgap>[125X [27X	od;[127X[104X
+    [4X[25Xgap>[125X [27X	return ret;[127X[104X
+    [4X[25Xgap>[125X [27Xend );[127X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.3-2 [33X[0;0YParamodifications[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XInstallGlobalFunction( ParamodificationOfUnitalNC, function( u, b, chi )[127X[104X
+    [4X[25X>[125X [27X	local Cb, n_Cb, C_star_b, intact_blks, B_star;[127X[104X
+    [4X[25Xgap>[125X [27X	Cb := Filtered( BlocksOfUnital( u ),[127X[104X
+    [4X[25X>[125X [27X		x -> Size( Intersection( x, b ) ) = 1 );[127X[104X
+    [4X[25Xgap>[125X [27X	n_Cb := Length( Cb );[127X[104X
+    [4X[25Xgap>[125X [27X	C_star_b := List( [1..n_Cb],[127X[104X
+    [4X[25X>[125X [27X		i -> Union( Difference( Cb[i], b ), [ b[i^chi] ] ) );[127X[104X
+    [4X[25Xgap>[125X [27X	intact_blks := Difference( BlocksOfUnital( u ), Cb );[127X[104X
+    [4X[25Xgap>[125X [27X	B_star := Union( intact_blks, C_star_b );[127X[104X
+    [4X[25Xgap>[125X [27X	return AbstractUnitalByDesignBlocks( B_star );[127X[104X
+    [4X[25Xgap>[125X [27Xend );[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XInstallGlobalFunction( ParamodificationOfUnital, function( u, b, chi )[127X[104X
+    [4X[25X>[125X [27X	local Cb;[127X[104X
+    [4X[25Xgap>[125X [27X	if not b in BlocksOfUnital( u ) then [127X[104X
+    [4X[25X>[125X [27X		Error( "argument 2 must be a block of argument 1");[127X[104X
+    [4X[25Xgap>[125X [27X	fi;[127X[104X
+    [4X[25Xgap>[125X [27X	Cb := Filtered( BlocksOfUnital( u ),[127X[104X
+    [4X[25X>[125X [27X                   x -> Size( Intersection( x, b ) ) = 1 );[127X[104X
+    [4X[25Xgap>[125X [27X	Cb := List( Cb, x -> Difference( x, b) );[127X[104X
+    [4X[25Xgap>[125X [27X	if not ForAll( Combinations( [1..Size(Cb)], 2 ), p ->[127X[104X
+    [4X[25X>[125X [27X			Intersection(Cb{p})=[] or [127X[104X
+    [4X[25X>[125X [27X			(p[1]^chi<>p[2]^chi)[127X[104X
+    [4X[25X>[125X [27X		) then Error( "argument 3 is not a proper block coloring" ); [127X[104X
+    [4X[25Xgap>[125X [27X	fi;[127X[104X
+    [4X[25Xgap>[125X [27X	return ParamodificationOfUnitalNC( u, b, chi );[127X[104X
+    [4X[25Xgap>[125X [27Xend );[127X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.3-3 [33X[0;0YParamodifications with respect to a block[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XInstallGlobalFunction( ParamodificationsOfUnitalWithBlock, [127X[104X
+    [4X[25X>[125X [27Xfunction( u, b )[127X[104X
+    [4X[25X>[125X [27X	local q, Cb, b_stab, new_unitals, all, allchibmod, i, isom_class, colorings;[127X[104X
+    [4X[25Xgap>[125X [27X	if not b in BlocksOfUnital( u ) then [127X[104X
+    [4X[25X>[125X [27X		Error( "argument 2 must be a block of argument 1");[127X[104X
+    [4X[25Xgap>[125X [27X	fi;[127X[104X
+    [4X[25Xgap>[125X [27X	q := Order( u );[127X[104X
+    [4X[25Xgap>[125X [27X	Cb := Filtered( BlocksOfUnital( u ),[127X[104X
+    [4X[25X>[125X [27X		x -> Size( Intersection( x, b ) ) = 1 );[127X[104X
+    [4X[25Xgap>[125X [27X	# Important: keep the order from BlocksOfUnital[127X[104X
+    [4X[25X>[125X [27X	Cb := List( Cb, x -> Difference( x, b ) ); [127X[104X
+    [4X[25Xgap>[125X [27X	# compute all colorings[127X[104X
+    [4X[25X>[125X [27X	b_stab := Stabilizer( AutomorphismGroup( u ), b, OnSets );[127X[104X
+    [4X[25Xgap>[125X [27X	colorings := AllRegularBlockColorings( Cb, q + 1, b_stab );[127X[104X
+    [4X[25Xgap>[125X [27X	Info( InfoParamod, 1, Size( colorings ), " coloring(s) for the given unital-block pair computed..." );[127X[104X
+    [4X[25Xgap>[125X [27X	new_unitals := List( colorings, c -> ParamodificationOfUnitalNC( u, b, c ) );[127X[104X
+    [4X[25Xgap>[125X [27X	# reduction up to isomorphism[127X[104X
+    [4X[25X>[125X [27X	all := [1..Length( new_unitals )];[127X[104X
+    [4X[25Xgap>[125X [27X	allchibmod := [];[127X[104X
+    [4X[25Xgap>[125X [27X	while all <> [] do[127X[104X
+    [4X[25X>[125X [27X		i := Remove( all );[127X[104X
+    [4X[25Xgap>[125X [27X		isom_class := Filtered( all, x -> Isomorphism( new_unitals[i],[127X[104X
+    [4X[25X>[125X [27X			new_unitals[x] ) <> fail ) ;[127X[104X
+    [4X[25Xgap>[125X [27X		all := Difference( all, isom_class );[127X[104X
+    [4X[25Xgap>[125X [27X		Add( allchibmod, new_unitals[i] );[127X[104X
+    [4X[25Xgap>[125X [27X	od;[127X[104X
+    [4X[25Xgap>[125X [27X	return allchibmod;[127X[104X
+    [4X[25Xgap>[125X [27Xend );[127X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.3-4 [33X[0;0YAll paramodifications of a unital[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XInstallGlobalFunction( AllParamodificationsOfUnital, function( u )[127X[104X
+    [4X[25X>[125X [27X	local blocks, rep_blocks, allchibmods, uus, b;[127X[104X
+    [4X[25Xgap>[125X [27X	blocks := BlocksOfUnital( u );[127X[104X
+    [4X[25Xgap>[125X [27X	rep_blocks := List( Orbits( AutomorphismGroup( u ), blocks, OnSets ),[127X[104X
+    [4X[25X>[125X [27X		      orb -> Representative( orb ) );[127X[104X
+    [4X[25Xgap>[125X [27X	Info( InfoParamod, 2, Size( rep_blocks ), " block representatives for the unital computed..." );[127X[104X
+    [4X[25Xgap>[125X [27X	allchibmods := [];[127X[104X
+    [4X[25Xgap>[125X [27X	for b in rep_blocks do[127X[104X
+    [4X[25X>[125X [27X		uus := ParamodificationsOfUnitalWithBlock( u, b );[127X[104X
+    [4X[25Xgap>[125X [27X		uus := Filtered( uus, x -> Isomorphism( x, u ) = fail and[127X[104X
+    [4X[25X>[125X [27X				ForAll( allchibmods, y -> Isomorphism( y, x ) = fail ) );[127X[104X
+    [4X[25Xgap>[125X [27X		Append( allchibmods, uus );[127X[104X
+    [4X[25Xgap>[125X [27X	od;[127X[104X
+    [4X[25Xgap>[125X [27X	return allchibmods;[127X[104X
+    [4X[25Xgap>[125X [27Xend );[127X[104X
+  [4X[32X[104X
+  

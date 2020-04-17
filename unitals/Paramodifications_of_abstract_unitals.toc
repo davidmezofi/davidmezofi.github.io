@@ -1,0 +1,15 @@
+\contentsline {chapter}{\numberline {1}\leavevmode {\color {Chapter }Commands for paramodifications}}{4}{chapter.1}% 
+\contentsline {section}{\numberline {1.1}\leavevmode {\color {Chapter }Prerequisites}}{4}{section.1.1}% 
+\contentsline {subsection}{\numberline {1.1.1}\leavevmode {\color {Chapter }AllRegularBlockColorings}}{4}{subsection.1.1.1}% 
+\contentsline {section}{\numberline {1.2}\leavevmode {\color {Chapter }Paramodifications}}{4}{section.1.2}% 
+\contentsline {subsection}{\numberline {1.2.1}\leavevmode {\color {Chapter }ParamodificationOfUnital}}{4}{subsection.1.2.1}% 
+\contentsline {subsection}{\numberline {1.2.2}\leavevmode {\color {Chapter }ParamodificationsOfUnitalWithBlock}}{5}{subsection.1.2.2}% 
+\contentsline {subsection}{\numberline {1.2.3}\leavevmode {\color {Chapter }AllParamodificationsOfUnital}}{5}{subsection.1.2.3}% 
+\contentsline {section}{\numberline {1.3}\leavevmode {\color {Chapter }Implementations}}{5}{section.1.3}% 
+\contentsline {subsection}{\numberline {1.3.1}\leavevmode {\color {Chapter }Regular block colorings}}{5}{subsection.1.3.1}% 
+\contentsline {subsection}{\numberline {1.3.2}\leavevmode {\color {Chapter }Paramodifications}}{5}{subsection.1.3.2}% 
+\contentsline {subsection}{\numberline {1.3.3}\leavevmode {\color {Chapter }Paramodifications with respect to a block}}{6}{subsection.1.3.3}% 
+\contentsline {subsection}{\numberline {1.3.4}\leavevmode {\color {Chapter }All paramodifications of a unital}}{7}{subsection.1.3.4}% 
+\contentsline {chapter}{\numberline {2}\leavevmode {\color {Chapter }Examples}}{8}{chapter.2}% 
+\contentsline {section}{\numberline {2.1}\leavevmode {\color {Chapter }Computing paramodifications}}{8}{section.2.1}% 
+\contentsline {section}{\numberline {2.2}\leavevmode {\color {Chapter }Para-rigidity of cyclic unitals}}{9}{section.2.2}% 

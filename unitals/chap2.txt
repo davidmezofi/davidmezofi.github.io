@@ -1,0 +1,85 @@
+  
+  [1X2 [33X[0;0YExamples[133X[101X
+  
+  
+  [1X2.1 [33X[0;0YComputing paramodifications[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "UnitalSZ", false );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "grape", false );[127X[104X
+    [4X[25Xgap>[125X [27Xu:=KNPAbstractUnital(1577);[127X[104X
+    [4X[28XKNPAbstractUnital(1577)[128X[104X
+    [4X[25Xgap>[125X [27XAutomorphismGroup(u);[127X[104X
+    [4X[28X<permutation group with 6 generators>[128X[104X
+    [4X[25Xgap>[125X [27Xb:=BlocksOfUnital(u)[1];[127X[104X
+    [4X[28X[ 1, 2, 5, 6, 14 ][128X[104X
+    [4X[25Xgap>[125X [27Xbls0:=Filtered(BlocksOfUnital(u),x->Size(Intersection(x,b))=1);;[127X[104X
+    [4X[25Xgap>[125X [27Xbls:=List(bls0,x->Difference(x,b));;[127X[104X
+    [4X[25Xgap>[125X [27Xcols:=AllRegularBlockColorings(bls,5,Group(())); time;[127X[104X
+    [4X[28X[ Transformation( [ 1, 1, 1, 4, 2, 5, 3, 5, 3, 4, 2, 2, 5, 3, 4, 4, 3, 2, 5, 5, 3, 4, 4, 5, 3, 2, 2, 1, 1, 1, 5, 3, 2, 4, 5, 2, 5,[128X[104X
+    [4X[28X     4, 3, 2, 2, 3, 2, 5, 3, 4, 1, 1, 1, 4, 2, 4, 4, 5, 2, 3, 2, 5, 3, 1, 1, 1, 3, 3, 2, 5, 3, 5, 4, 4, 4, 5, 1, 1, 1 ] ), [128X[104X
+    [4X[28X  Transformation( [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 3, 3, 4, 2, 4, 2, 3, 3, 2, 4, 2, 5, 5, 5, 5, 3, 2, 2, 4, 5, 2,[128X[104X
+    [4X[28X     5, 3, 5, 3, 2, 2, 3, 5, 3, 4, 4, 4, 4, 3, 5, 3, 5, 4, 4, 5, 3, 5, 2, 2, 2, 5, 2, 4, 2, 4, 5, 5, 4, 2, 4, 3, 3, 3 ] ), [128X[104X
+    [4X[28X  Transformation( [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 5, 5, 5, 3, 3, 3, 5, 3, 3, 5, 4, 5, 3, 2, 2, 5, 3, 2,[128X[104X
+    [4X[28X     5, 2, 4, 2, 5, 5, 4, 4, 4, 4, 2, 5, 5, 3, 3, 2, 3, 2, 2, 5, 2, 5, 5, 3, 2, 3, 2, 4, 3, 4, 4, 4, 2, 3, 2, 4, 2, 3 ] ), [128X[104X
+    [4X[28X  Transformation( [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 3, 2, 5, 3, 2, 5,[128X[104X
+    [4X[28X     5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 ] ), [128X[104X
+    [4X[28X  Transformation( [ 1, 2, 5, 5, 5, 5, 5, 2, 1, 2, 2, 1, 1, 2, 1, 4, 4, 4, 4, 2, 2, 2, 1, 1, 1, 2, 1, 1, 2, 4, 5, 3, 2, 1, 3, 5, 1,[128X[104X
+    [4X[28X     5, 1, 4, 1, 5, 5, 4, 4, 4, 4, 1, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5, 2, 4, 5, 4, 4, 4, 2, 5, 2, 4, 2, 5 ] ), [128X[104X
+    [4X[28X  Transformation( [ 1, 3, 4, 4, 4, 4, 4, 3, 1, 3, 3, 1, 1, 3, 1, 4, 4, 4, 4, 5, 5, 5, 1, 1, 1, 5, 1, 1, 5, 4, 5, 3, 2, 1, 5, 2, 1,[128X[104X
+    [4X[28X     5, 1, 3, 1, 5, 5, 3, 3, 3, 3, 1, 5, 5, 3, 3, 4, 3, 4, 4, 5, 4, 5, 5, 3, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 ] ), [128X[104X
+    [4X[28X  Transformation( [ 1, 2, 4, 4, 4, 4, 4, 2, 1, 2, 2, 1, 1, 2, 1, 4, 4, 4, 4, 2, 2, 2, 3, 3, 3, 2, 3, 3, 2, 4, 5, 3, 2, 5, 1, 3, 5,[128X[104X
+    [4X[28X     5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 1, 3, 3, 4, 3, 4, 4, 1, 4, 1, 1, 3, 4, 3, 2, 1, 3, 1, 1, 1, 2, 3, 2, 1, 2, 3 ] ), [128X[104X
+    [4X[28X  Transformation( [ 1, 3, 5, 5, 5, 5, 5, 3, 1, 3, 3, 1, 1, 3, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 3, 2, 2, 1, 5, 2,[128X[104X
+    [4X[28X     5, 2, 3, 2, 5, 5, 3, 3, 3, 3, 2, 5, 1, 3, 3, 2, 3, 2, 2, 1, 2, 1, 1, 3, 2, 5, 2, 1, 5, 1, 1, 1, 2, 5, 2, 1, 2, 5 ] ), [128X[104X
+    [4X[28X  Transformation( [ 1, 5, 2, 1, 5, 1, 5, 2, 2, 2, 1, 2, 5, 1, 5, 4, 1, 1, 4, 1, 4, 1, 3, 3, 3, 4, 3, 3, 5, 2, 5, 3, 2, 2, 4, 3, 2,[128X[104X
+    [4X[28X     5, 5, 2, 5, 1, 1, 1, 2, 1, 4, 4, 4, 4, 3, 3, 5, 3, 4, 4, 5, 5, 5, 1, 3, 2, 3, 2, 4, 3, 4, 2, 2, 4, 3, 4, 1, 5, 3 ] ), [128X[104X
+    [4X[28X  Transformation( [ 1, 4, 3, 1, 4, 1, 4, 3, 3, 3, 1, 3, 4, 1, 4, 4, 1, 1, 4, 1, 3, 1, 3, 3, 4, 3, 4, 5, 5, 5, 5, 3, 2, 2, 3, 5, 2,[128X[104X
+    [4X[28X     5, 2, 5, 2, 1, 1, 1, 5, 1, 4, 2, 3, 3, 3, 5, 2, 5, 2, 2, 5, 2, 5, 1, 4, 2, 5, 2, 4, 4, 4, 5, 5, 2, 4, 2, 1, 2, 3 ] ), [128X[104X
+    [4X[28X  Transformation( [ 1, 4, 2, 1, 4, 1, 4, 2, 2, 2, 1, 2, 4, 1, 4, 4, 3, 3, 4, 5, 5, 5, 3, 3, 4, 5, 4, 1, 5, 2, 5, 3, 2, 2, 5, 1, 2,[128X[104X
+    [4X[28X     5, 3, 2, 3, 5, 5, 3, 2, 3, 4, 1, 5, 5, 3, 1, 3, 1, 1, 1, 5, 3, 5, 5, 4, 2, 1, 2, 4, 4, 4, 2, 2, 1, 4, 1, 3, 3, 3 ] ), [128X[104X
+    [4X[28X  Transformation( [ 1, 5, 3, 1, 5, 1, 5, 3, 3, 3, 1, 3, 5, 1, 5, 4, 4, 4, 4, 2, 3, 2, 3, 3, 2, 3, 2, 1, 5, 4, 5, 3, 2, 2, 3, 1, 2,[128X[104X
+    [4X[28X     5, 5, 4, 5, 2, 2, 4, 4, 4, 4, 1, 3, 3, 3, 1, 5, 1, 1, 1, 5, 5, 5, 2, 2, 2, 1, 2, 4, 2, 4, 4, 4, 1, 2, 1, 4, 5, 3 ] ) ][128X[104X
+    [4X[28X342[128X[104X
+    [4X[25Xgap>[125X [27XList(cols,c->ParamodificationOfUnitalNC(u,b,c)); time;[127X[104X
+    [4X[28X[ AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, [128X[104X
+    [4X[28X  AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4> ][128X[104X
+    [4X[28X32[128X[104X
+    [4X[25Xgap>[125X [27XList(cols,c->ParamodificationOfUnital(u,b,c)); time;[127X[104X
+    [4X[28X[ AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, [128X[104X
+    [4X[28X  AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4> ][128X[104X
+    [4X[28X88[128X[104X
+    [4X[25Xgap>[125X [27XParamodificationsOfUnitalWithBlock(u,b); time;[127X[104X
+    [4X[28X[ AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4> ][128X[104X
+    [4X[28X219[128X[104X
+    [4X[25Xgap>[125X [27XAllParamodificationsOfUnital(u); time;[127X[104X
+    [4X[28X[ AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, [128X[104X
+    [4X[28X  AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4> ][128X[104X
+    [4X[28X961[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X2.2 [33X[0;0YPara-rigidity of cyclic unitals[133X[101X
+  
+  [33X[0;0YWe  say  that  a  unital  is  [13Xpara-rigid[113X, if all block colorings of [23XC(b)[123X are
+  equivalent with the trivial one. The following example shows that the cyclic
+  unitals of order 4 and 6 by Bagchi and Bagchi are para-rigid.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XSetInfoLevel(InfoParamod,2);[127X[104X
+    [4X[25Xgap>[125X [27Xu:=BagchiBagchiCyclicUnital(4);[127X[104X
+    [4X[28XBagchiBagchiCyclicUnital(4)[128X[104X
+    [4X[25Xgap>[125X [27XAllParamodificationsOfUnital(u);[127X[104X
+    [4X[28X#I  2 block representatives for the unital computed...[128X[104X
+    [4X[28X#I  1 coloring(s) for the given unital-block pair computed...[128X[104X
+    [4X[28X#I  1 coloring(s) for the given unital-block pair computed...[128X[104X
+    [4X[28X[  ][128X[104X
+    [4X[25Xgap>[125X [27Xu:=BagchiBagchiCyclicUnital(6);[127X[104X
+    [4X[28XBagchiBagchiCyclicUnital(6)[128X[104X
+    [4X[25Xgap>[125X [27XAllParamodificationsOfUnital(u);[127X[104X
+    [4X[28X#I  2 block representatives for the unital computed...[128X[104X
+    [4X[28X#I  1 coloring(s) for the given unital-block pair computed...[128X[104X
+    [4X[28X#I  1 coloring(s) for the given unital-block pair computed...[128X[104X
+    [4X[28X[  ][128X[104X
+  [4X[32X[104X
+  

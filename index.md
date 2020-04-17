@@ -2,7 +2,12 @@
 
 # GAP packages
 
-- [UnitalSZ](https://nagygp.github.io/UnitalSZ/): for studying abstract unitals
-  using GAP
-- [LRS4GAP](https://github.com/davidmezofi/LRS4GAP): a GAP interface for the LP
-  solvers LRS and GLPK
+- [UnitalSZ][unitalsz]: for studying abstract unitals using [GAP][gap]
+- [LRS4GAP][lrs4gap] a GAP interface for the LP solvers [LRS][lrs] and
+  [GLPK][glpk]
+
+[unitalsz]: https://nagygp.github.io/UnitalSZ/
+[lrs4gap]: https://github.com/davidmezofi/LRS4GAP
+[gap]: https://www.gap-system.org/
+[lrs]: http://cgm.cs.mcgill.ca/~avis/C/lrs.html
+[glpk]: https://www.gnu.org/software/glpk/

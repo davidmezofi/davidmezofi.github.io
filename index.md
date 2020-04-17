@@ -1,4 +1,4 @@
-# Dávid Mezőfi's Personal GitHub Page
+# Dávid Mezőfi's personal GitHub page
 
 ## GAP packages
 

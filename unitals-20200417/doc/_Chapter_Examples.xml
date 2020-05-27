@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This is an automatically generated file. -->
+<Chapter Label="Chapter_Examples">
+<Heading>Examples</Heading>
+
+<Section Label="Chapter_Examples_Section_Computing_paramodifications">
+<Heading>Computing paramodifications</Heading>
+
+<Example><![CDATA[
+gap> LoadPackage( "UnitalSZ", false );
+gap> LoadPackage( "grape", false );
+gap> u:=KNPAbstractUnital(1577);
+KNPAbstractUnital(1577)
+gap> AutomorphismGroup(u);
+<permutation group with 6 generators>
+gap> b:=BlocksOfUnital(u)[1];
+[ 1, 2, 5, 6, 14 ]
+gap> bls0:=Filtered(BlocksOfUnital(u),x->Size(Intersection(x,b))=1);;
+gap> bls:=List(bls0,x->Difference(x,b));;
+gap> cols:=AllRegularBlockColorings(bls,5,Group(())); time;
+[ Transformation( [ 1, 1, 1, 4, 2, 5, 3, 5, 3, 4, 2, 2, 5, 3, 4, 4, 3, 2, 5, 5, 3, 4, 4, 5, 3, 2, 2, 1, 1, 1, 5, 3, 2, 4, 5, 2, 5,
+     4, 3, 2, 2, 3, 2, 5, 3, 4, 1, 1, 1, 4, 2, 4, 4, 5, 2, 3, 2, 5, 3, 1, 1, 1, 3, 3, 2, 5, 3, 5, 4, 4, 4, 5, 1, 1, 1 ] ), 
+  Transformation( [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 3, 3, 4, 2, 4, 2, 3, 3, 2, 4, 2, 5, 5, 5, 5, 3, 2, 2, 4, 5, 2,
+     5, 3, 5, 3, 2, 2, 3, 5, 3, 4, 4, 4, 4, 3, 5, 3, 5, 4, 4, 5, 3, 5, 2, 2, 2, 5, 2, 4, 2, 4, 5, 5, 4, 2, 4, 3, 3, 3 ] ), 
+  Transformation( [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 5, 5, 5, 3, 3, 3, 5, 3, 3, 5, 4, 5, 3, 2, 2, 5, 3, 2,
+     5, 2, 4, 2, 5, 5, 4, 4, 4, 4, 2, 5, 5, 3, 3, 2, 3, 2, 2, 5, 2, 5, 5, 3, 2, 3, 2, 4, 3, 4, 4, 4, 2, 3, 2, 4, 2, 3 ] ), 
+  Transformation( [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 3, 2, 5, 3, 2, 5,
+     5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 ] ), 
+  Transformation( [ 1, 2, 5, 5, 5, 5, 5, 2, 1, 2, 2, 1, 1, 2, 1, 4, 4, 4, 4, 2, 2, 2, 1, 1, 1, 2, 1, 1, 2, 4, 5, 3, 2, 1, 3, 5, 1,
+     5, 1, 4, 1, 5, 5, 4, 4, 4, 4, 1, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5, 2, 4, 5, 4, 4, 4, 2, 5, 2, 4, 2, 5 ] ), 
+  Transformation( [ 1, 3, 4, 4, 4, 4, 4, 3, 1, 3, 3, 1, 1, 3, 1, 4, 4, 4, 4, 5, 5, 5, 1, 1, 1, 5, 1, 1, 5, 4, 5, 3, 2, 1, 5, 2, 1,
+     5, 1, 3, 1, 5, 5, 3, 3, 3, 3, 1, 5, 5, 3, 3, 4, 3, 4, 4, 5, 4, 5, 5, 3, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 ] ), 
+  Transformation( [ 1, 2, 4, 4, 4, 4, 4, 2, 1, 2, 2, 1, 1, 2, 1, 4, 4, 4, 4, 2, 2, 2, 3, 3, 3, 2, 3, 3, 2, 4, 5, 3, 2, 5, 1, 3, 5,
+     5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 1, 3, 3, 4, 3, 4, 4, 1, 4, 1, 1, 3, 4, 3, 2, 1, 3, 1, 1, 1, 2, 3, 2, 1, 2, 3 ] ), 
+  Transformation( [ 1, 3, 5, 5, 5, 5, 5, 3, 1, 3, 3, 1, 1, 3, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 3, 2, 2, 1, 5, 2,
+     5, 2, 3, 2, 5, 5, 3, 3, 3, 3, 2, 5, 1, 3, 3, 2, 3, 2, 2, 1, 2, 1, 1, 3, 2, 5, 2, 1, 5, 1, 1, 1, 2, 5, 2, 1, 2, 5 ] ), 
+  Transformation( [ 1, 5, 2, 1, 5, 1, 5, 2, 2, 2, 1, 2, 5, 1, 5, 4, 1, 1, 4, 1, 4, 1, 3, 3, 3, 4, 3, 3, 5, 2, 5, 3, 2, 2, 4, 3, 2,
+     5, 5, 2, 5, 1, 1, 1, 2, 1, 4, 4, 4, 4, 3, 3, 5, 3, 4, 4, 5, 5, 5, 1, 3, 2, 3, 2, 4, 3, 4, 2, 2, 4, 3, 4, 1, 5, 3 ] ), 
+  Transformation( [ 1, 4, 3, 1, 4, 1, 4, 3, 3, 3, 1, 3, 4, 1, 4, 4, 1, 1, 4, 1, 3, 1, 3, 3, 4, 3, 4, 5, 5, 5, 5, 3, 2, 2, 3, 5, 2,
+     5, 2, 5, 2, 1, 1, 1, 5, 1, 4, 2, 3, 3, 3, 5, 2, 5, 2, 2, 5, 2, 5, 1, 4, 2, 5, 2, 4, 4, 4, 5, 5, 2, 4, 2, 1, 2, 3 ] ), 
+  Transformation( [ 1, 4, 2, 1, 4, 1, 4, 2, 2, 2, 1, 2, 4, 1, 4, 4, 3, 3, 4, 5, 5, 5, 3, 3, 4, 5, 4, 1, 5, 2, 5, 3, 2, 2, 5, 1, 2,
+     5, 3, 2, 3, 5, 5, 3, 2, 3, 4, 1, 5, 5, 3, 1, 3, 1, 1, 1, 5, 3, 5, 5, 4, 2, 1, 2, 4, 4, 4, 2, 2, 1, 4, 1, 3, 3, 3 ] ), 
+  Transformation( [ 1, 5, 3, 1, 5, 1, 5, 3, 3, 3, 1, 3, 5, 1, 5, 4, 4, 4, 4, 2, 3, 2, 3, 3, 2, 3, 2, 1, 5, 4, 5, 3, 2, 2, 3, 1, 2,
+     5, 5, 4, 5, 2, 2, 4, 4, 4, 4, 1, 3, 3, 3, 1, 5, 1, 1, 1, 5, 5, 5, 2, 2, 2, 1, 2, 4, 2, 4, 4, 4, 1, 2, 1, 4, 5, 3 ] ) ]
+342
+gap> List(cols,c->ParamodificationOfUnitalNC(u,b,c)); time;
+[ AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, 
+  AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4> ]
+32
+gap> List(cols,c->ParamodificationOfUnital(u,b,c)); time;
+[ AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, 
+  AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4> ]
+88
+gap> ParamodificationsOfUnitalWithBlock(u,b); time;
+[ AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4> ]
+219
+gap> AllParamodificationsOfUnital(u); time;
+[ AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, 
+  AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4>, AU_UnitalDesign<4> ]
+961
+]]></Example>
+
+
+</Section>
+
+
+<Section Label="Chapter_Examples_Section_Para-rigidity_of_cyclic_unitals">
+<Heading>Para-rigidity of cyclic unitals</Heading>
+
+ We say that a unital is <Emph>para-rigid</Emph>, if all block colorings of <Math>C(b)</Math> are equivalent with the trivial one.
+ The following example shows that the cyclic unitals of order 4 and 6 by Bagchi and Bagchi are para-rigid.
+<Example><![CDATA[
+gap> SetInfoLevel(InfoParamod,2);
+gap> u:=BagchiBagchiCyclicUnital(4);
+BagchiBagchiCyclicUnital(4)
+gap> AllParamodificationsOfUnital(u);
+#I  2 block representatives for the unital computed...
+#I  1 coloring(s) for the given unital-block pair computed...
+#I  1 coloring(s) for the given unital-block pair computed...
+[  ]
+gap> u:=BagchiBagchiCyclicUnital(6);
+BagchiBagchiCyclicUnital(6)
+gap> AllParamodificationsOfUnital(u);
+#I  2 block representatives for the unital computed...
+#I  1 coloring(s) for the given unital-block pair computed...
+#I  1 coloring(s) for the given unital-block pair computed...
+[  ]
+]]></Example>
+
+
+</Section>
+
+
+</Chapter>
+

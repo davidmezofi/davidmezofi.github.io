@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This is an automatically generated file. -->
+<TitlePage>
+  <Title>
+    Paramodifications of abstract unitals
+  </Title>
+  <Subtitle>
+    GAP implementation and examples worksheet
+  </Subtitle>
+  <Version>
+    0.1
+  </Version>
+  <Author>
+    Gábor P. Nagy, Dávid Mezőfi
+  </Author>
+  <Date>
+    8 March 2020
+  </Date>
+  <Address>
+    Bolyai Institute of the University of Szeged (Hungary) <Br />
+    Department of Algebra of the Budapest University of Technology and Economics (Hungary)
+  </Address>
+  <Abstract>
+    
+      GAP implementation of paramodifications of abstract unitals. 
+
+      With small modifications, it must work for other 2-designs as well.
+
+  </Abstract>
+  <Copyright>
+    2020 Gábor P. Nagy
+  </Copyright>
+  <Acknowledgements>
+    Support provided from the National Research,
+     Development and Innovation Fund of Hungary, financed under the 
+
+     2018-1.2.1-NKP funding scheme, within the SETIT Project 
+
+     2018-1.2.1-NKP-2018-00004. Partially supported by OTKA grants 
+
+     119687 and 115288.
+
+  </Acknowledgements>
+  </TitlePage>

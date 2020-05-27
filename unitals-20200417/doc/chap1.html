@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (Paramodifications_of_abstract_unitals) - Chapter 1: Commands for paramodifications</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap1"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap1_mj.html">[MathJax on]</a></p>
+<p><a id="X7B51F4D982842F51" name="X7B51F4D982842F51"></a></p>
+<div class="ChapSects"><a href="chap1.html#X7B51F4D982842F51">1 <span class="Heading">Commands for paramodifications</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7B4649CF7B7CFAA1">1.1 <span class="Heading">Prerequisites</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X852D1E7D8343F655">1.1-1 AllRegularBlockColorings</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7E8B6954810EDCF9">1.2 <span class="Heading">Paramodifications</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8779000580CECE00">1.2-1 ParamodificationOfUnital</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7A808C647B7BC8BA">1.2-2 ParamodificationsOfUnitalWithBlock</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X86140B4786431C2A">1.2-3 AllParamodificationsOfUnital</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X79F3D6D08181A543">1.3 <span class="Heading">Implementations</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8602C529877A70B6">1.3-1 <span class="Heading">Regular block colorings</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7E8B6954810EDCF9">1.3-2 <span class="Heading">Paramodifications</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X86208050795C6640">1.3-3 <span class="Heading">Paramodifications with respect to a block</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7C5ED22881441375">1.3-4 <span class="Heading">All paramodifications of a unital</span></a>
+</span>
+</div></div>
+</div>
+
+<h3>1 <span class="Heading">Commands for paramodifications</span></h3>
+
+<p><a id="X7B4649CF7B7CFAA1" name="X7B4649CF7B7CFAA1"></a></p>
+
+<h4>1.1 <span class="Heading">Prerequisites</span></h4>
+
+<p>The <strong class="pkg">GAP</strong> packages <strong class="pkg">UnitalSZ</strong> and <strong class="pkg">GRAPE</strong> are necessary.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "UnitalSZ", false );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "grape", false );</span>
+</pre></div>
+
+<p>You can use the info class <code class="code">InfoParamod</code> to get extra information.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DeclareInfoClass( "InfoParamod" ); </span>
+</pre></div>
+
+<p><a id="X852D1E7D8343F655" name="X852D1E7D8343F655"></a></p>
+
+<h5>1.1-1 AllRegularBlockColorings</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AllRegularBlockColorings</code>( <var class="Arg">bls</var>, <var class="Arg">k</var>, <var class="Arg">gr</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: the list of block colorings of the set <var class="Arg">bls</var> of blocks, with <var class="Arg">k</var> colors and color classes of size <code class="code">|bls|/k</code>. The colorings are returned as GAP transformation objects from <code class="code">[1..Size(bls)]</code> to <code class="code">[1..k]</code>.</p>
+
+<p>Let <span class="Math">P</span> be a set, <span class="Math">B</span> a set of subsets (called <em>blocks</em>), and <span class="Math">k</span> a positive integer. The map <span class="Math">\chi:B\to \{1,\ldots,k\}</span> is a block coloring if <span class="Math">\chi(b)=\chi(b')</span> implies <span class="Math">b\cap b'=\emptyset</span> for any <span class="Math">b,b' \in B</span>. The block coloring in <em>regular</em>, if each color class has size <span class="Math">|B|/k</span>. The last argument <var class="Arg">gr</var> must be a block preserving permutation of the set <span class="Math">P</span> of points.</p>
+
+<p><a id="X7E8B6954810EDCF9" name="X7E8B6954810EDCF9"></a></p>
+
+<h4>1.2 <span class="Heading">Paramodifications</span></h4>
+
+<p><a id="X8779000580CECE00" name="X8779000580CECE00"></a></p>
+
+<h5>1.2-1 ParamodificationOfUnital</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ParamodificationOfUnital</code>( <var class="Arg">u</var>, <var class="Arg">b</var>, <var class="Arg">chi</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: the paramodification of the unital <var class="Arg">u</var> with respect to the block <var class="Arg">b</var> and regular block coloring <var class="Arg">chi</var> with <code class="code">|b|</code> colors.</p>
+
+<p>The coloring <var class="Arg">chi</var> must be given as a GAP transformation object from <code class="code">[1..q^2*(q^2-q+1)]</code> to <code class="code">[1..q+1]</code>, where <code class="code">q</code> is the order of <var class="Arg">u</var>. This function has a slightly faster non-checking version <code class="code">ParamodificationOfUnitalNC</code>.</p>
+
+<p><a id="X7A808C647B7BC8BA" name="X7A808C647B7BC8BA"></a></p>
+
+<h5>1.2-2 ParamodificationsOfUnitalWithBlock</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ParamodificationsOfUnitalWithBlock</code>( <var class="Arg">u</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: all paramodifications of the unital <var class="Arg">u</var> with respect to the block <var class="Arg">b</var>. The results are reduced up to isomorphism of abstract unitals.</p>
+
+<p><a id="X86140B4786431C2A" name="X86140B4786431C2A"></a></p>
+
+<h5>1.2-3 AllParamodificationsOfUnital</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AllParamodificationsOfUnital</code>( <var class="Arg">u</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: all paramodifications of the unital <var class="Arg">u</var>. The results are reduced up to isomorphism of abstract unitals.</p>
+
+<p><a id="X79F3D6D08181A543" name="X79F3D6D08181A543"></a></p>
+
+<h4>1.3 <span class="Heading">Implementations</span></h4>
+
+<p><a id="X8602C529877A70B6" name="X8602C529877A70B6"></a></p>
+
+<h5>1.3-1 <span class="Heading">Regular block colorings</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InstallGlobalFunction( AllRegularBlockColorings, function( bls, nr_colors, gr )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">	local Gamma, complete_subgraphs, graph_of_cliques, colorings, ret, new_blocks, c, c_vec, i, j;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	# construct the line graph and its cliques</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">	Gamma := Graph( gr, bls, OnSets,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        	function( x, y ) return x &lt;&gt; y and Intersection( x, y ) = [];</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	end );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	complete_subgraphs := CompleteSubgraphs( Gamma, Size(bls)/nr_colors, 1);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	complete_subgraphs := Union( List( complete_subgraphs,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">				x -&gt; Orbit( AutomorphismGroup( Gamma ), x, OnSets ) ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	Info( InfoParamod, 3, "cliques of the line graph computed..." );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	# construct the graph of cliques and its cliques</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">	graph_of_cliques := Graph( Gamma.group, complete_subgraphs, OnSets,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">				function( x, y ) return x &lt;&gt; y and Intersection( x, y ) = [];</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">				end );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	colorings := CompleteSubgraphs( graph_of_cliques, nr_colors, 1 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	Info( InfoParamod, 3, Size( colorings ), " block colorings computed..." );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	# construct colorings</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">	ret := [];</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	for c in colorings do</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">		c_vec:=0*[1..Size(bls)];</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">		for i in [1..nr_colors] do </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">			for j in VertexNames( graph_of_cliques )[c[i]] do</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">				c_vec[ Position( bls, VertexNames( Gamma )[j] ) ] := i;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">			od;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">		od;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">		Add(ret, Transformation(c_vec));</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	od;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	return ret;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">end );</span>
+</pre></div>
+
+<p><a id="X7E8B6954810EDCF9" name="X7E8B6954810EDCF9"></a></p>
+
+<h5>1.3-2 <span class="Heading">Paramodifications</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InstallGlobalFunction( ParamodificationOfUnitalNC, function( u, b, chi )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">	local Cb, n_Cb, C_star_b, intact_blks, B_star;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	Cb := Filtered( BlocksOfUnital( u ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">		x -&gt; Size( Intersection( x, b ) ) = 1 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	n_Cb := Length( Cb );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	C_star_b := List( [1..n_Cb],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">		i -&gt; Union( Difference( Cb[i], b ), [ b[i^chi] ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	intact_blks := Difference( BlocksOfUnital( u ), Cb );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	B_star := Union( intact_blks, C_star_b );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	return AbstractUnitalByDesignBlocks( B_star );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">end );</span>
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InstallGlobalFunction( ParamodificationOfUnital, function( u, b, chi )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">	local Cb;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	if not b in BlocksOfUnital( u ) then </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">		Error( "argument 2 must be a block of argument 1");</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	fi;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	Cb := Filtered( BlocksOfUnital( u ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                   x -&gt; Size( Intersection( x, b ) ) = 1 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	Cb := List( Cb, x -&gt; Difference( x, b) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	if not ForAll( Combinations( [1..Size(Cb)], 2 ), p -&gt;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">			Intersection(Cb{p})=[] or </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">			(p[1]^chi&lt;&gt;p[2]^chi)</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">		) then Error( "argument 3 is not a proper block coloring" ); </span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	fi;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	return ParamodificationOfUnitalNC( u, b, chi );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">end );</span>
+</pre></div>
+
+<p><a id="X86208050795C6640" name="X86208050795C6640"></a></p>
+
+<h5>1.3-3 <span class="Heading">Paramodifications with respect to a block</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InstallGlobalFunction( ParamodificationsOfUnitalWithBlock, </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">function( u, b )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">	local q, Cb, b_stab, new_unitals, all, allchibmod, i, isom_class, colorings;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	if not b in BlocksOfUnital( u ) then </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">		Error( "argument 2 must be a block of argument 1");</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	fi;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	q := Order( u );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	Cb := Filtered( BlocksOfUnital( u ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">		x -&gt; Size( Intersection( x, b ) ) = 1 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	# Important: keep the order from BlocksOfUnital</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">	Cb := List( Cb, x -&gt; Difference( x, b ) ); </span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	# compute all colorings</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">	b_stab := Stabilizer( AutomorphismGroup( u ), b, OnSets );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	colorings := AllRegularBlockColorings( Cb, q + 1, b_stab );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	Info( InfoParamod, 1, Size( colorings ), " coloring(s) for the given unital-block pair computed..." );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	new_unitals := List( colorings, c -&gt; ParamodificationOfUnitalNC( u, b, c ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	# reduction up to isomorphism</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">	all := [1..Length( new_unitals )];</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	allchibmod := [];</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	while all &lt;&gt; [] do</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">		i := Remove( all );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">		isom_class := Filtered( all, x -&gt; Isomorphism( new_unitals[i],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">			new_unitals[x] ) &lt;&gt; fail ) ;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">		all := Difference( all, isom_class );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">		Add( allchibmod, new_unitals[i] );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	od;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	return allchibmod;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">end );</span>
+</pre></div>
+
+<p><a id="X7C5ED22881441375" name="X7C5ED22881441375"></a></p>
+
+<h5>1.3-4 <span class="Heading">All paramodifications of a unital</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InstallGlobalFunction( AllParamodificationsOfUnital, function( u )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">	local blocks, rep_blocks, allchibmods, uus, b;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	blocks := BlocksOfUnital( u );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	rep_blocks := List( Orbits( AutomorphismGroup( u ), blocks, OnSets ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">		      orb -&gt; Representative( orb ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	Info( InfoParamod, 2, Size( rep_blocks ), " block representatives for the unital computed..." );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	allchibmods := [];</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	for b in rep_blocks do</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">		uus := ParamodificationsOfUnitalWithBlock( u, b );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">		uus := Filtered( uus, x -&gt; Isomorphism( x, u ) = fail and</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">				ForAll( allchibmods, y -&gt; Isomorphism( y, x ) = fail ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">		Append( allchibmods, uus );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	od;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	return allchibmods;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">end );</span>
+</pre></div>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

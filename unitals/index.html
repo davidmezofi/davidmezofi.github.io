@@ -373,7 +373,7 @@ summary {
 
 <h1 class="title toc-ignore">Paramodifications of unitals</h1>
 <h4 class="author">Dávid Mezőfi, Gábor Nagy</h4>
-<h4 class="date">Last modified<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>: 2020-05-27</h4>
+<h4 class="date">Last modified<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>: 2020-07-05</h4>
 
 </div>
 
@@ -399,13 +399,13 @@ summary {
 <p>You may experiment with</p>
 <ul>
 <li>the <a href="paramod_worksheet.g">source file</a> of the GAP worksheet,</li>
-<li>the computed parts of <a href="20200306-p3m-graph.s6.gz"><span class="math inline">\(\Psi_3\)</span></a> and <a href="20200305-p4m-graph.s6.gz"><span class="math inline">\(\Psi_4\)</span></a> in <a href="https://users.cecs.anu.edu.au/~bdm/data/formats.html">sparse6</a> format,</li>
-<li>the vertex labelings <a href="vertex-names-psi3.g"><code>vertex-names-psi3.g</code></a> and <a href="vertex-names-psi4.g"><code>vertex-names-psi4.g</code></a> which identifies the GAP objects and the vertices.</li>
+<li>the computed parts of <a href="psi3.g6.gz"><span class="math inline">\(\Psi_3\)</span></a> and <a href="psi4.s6.gz"><span class="math inline">\(\Psi_4\)</span></a> in <a href="https://users.cecs.anu.edu.au/~bdm/data/formats.html">graph6 and sparse6</a> format,</li>
+<li>the vertex labelings <a href="psi3-vertex-names.g"><code>psi3-vertex-names.g</code></a> and <a href="psi4-vertex-names.g"><code>psi4-vertex-names.g</code></a> which identifies the GAP objects and the vertices.</li>
 </ul>
 </div>
 <div id="run-times" class="section level3">
 <h3>Run-times</h3>
-<p>The computing of all paramodification of a unital of order <span class="math inline">\(q\)</span> can be reduced to compute the propert <span class="math inline">\(q+1\)</span>-coloring of a simple graph with <span class="math inline">\((q+1)(q^2-1)\)</span> vertices. This can be done by the independent set cover method, or by different integer linear programs (ASS, POP, POP2). We have timed the run-time of finding all possible (non-isomorphic) <span class="math inline">\((\chi,b)\)</span>-paramodifications of a unital (and it’s) block for 30 random unitals of order 4 (from the KNP library) and random blocks (the measurements are in milliseconds):</p>
+<p>The computing of all paramodification of a unital of order <span class="math inline">\(q\)</span> can be reduced to compute the proper <span class="math inline">\(q+1\)</span>-coloring of a simple graph with <span class="math inline">\((q+1)(q^2-1)\)</span> vertices. This can be done by the independent set cover method, or by different integer linear programs (ASS, POP, POP2). We have timed the run-time of finding all possible (non-isomorphic) <span class="math inline">\((\chi,b)\)</span>-paramodifications of a unital (and it’s) block for 30 random unitals of order 4 (from the KNP library) and random blocks (the measurements are in milliseconds):</p>
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -543,12 +543,12 @@ scip_pop2
 <ul>
 <li>There are <strong>1458 isolated</strong> KNP unitals</li>
 <li>There are <strong>87 ‘small’ components</strong> (these only have nodes at most in <span class="math inline">\(V_1\)</span>)</li>
-<li>We have computed <strong>61 ‘large’ components</strong> (these have at least one node in <span class="math inline">\(V_2\)</span>), <strong>57 of them are fully computed</strong></li>
-<li><strong>4 are <em>stub</em> components</strong></li>
-<li>There are <strong>12484 unfinished vertices</strong></li>
-<li>There are <strong>at least 1603</strong> and <strong>at most 1606 components</strong></li>
+<li>We have computed <strong>61 ‘large’ components</strong> (these have at least one node in <span class="math inline">\(V_2\)</span>), <strong>59 of them are fully computed</strong></li>
+<li><strong>2 are <em>stub</em> components</strong></li>
+<li>There are <strong>10126 unfinished vertices</strong></li>
+<li>There are <strong>at least 1605</strong> and <strong>at most 1606 components</strong></li>
 <li>In 8 components we have found other KNP unitals apart from the ones in <span class="math inline">\(V_0\)</span></li>
-<li>We have found <strong>25712 new unitals</strong></li>
+<li>We have found <strong>27478 new unitals</strong></li>
 <li>There are no new unitals in 2 components</li>
 </ul>
 <div style="border: 1px solid #ddd; padding: 0px; border-style: none; padding: 0px 0.62em; margin-left: auto; margin-right: auto; margin-bottom: 20px;overflow-y: scroll; height:24em; overflow-x: scroll; width:100%; ">
@@ -633,7 +633,7 @@ TRUE
 3
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -653,7 +653,7 @@ TRUE
 2
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -673,7 +673,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -773,7 +773,7 @@ TRUE
 3
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -793,7 +793,7 @@ TRUE
 4
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -853,7 +853,7 @@ TRUE
 3
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -893,7 +893,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -1033,7 +1033,7 @@ TRUE
 6
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -1053,7 +1053,7 @@ TRUE
 2
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -1153,7 +1153,7 @@ TRUE
 4
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -1193,7 +1193,7 @@ TRUE
 2
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -1213,7 +1213,7 @@ TRUE
 2
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -1253,7 +1253,7 @@ TRUE
 2
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -1333,7 +1333,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -1373,7 +1373,7 @@ TRUE
 2
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -1413,7 +1413,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -1453,7 +1453,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -1553,7 +1553,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -1673,7 +1673,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -1693,7 +1693,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -1733,7 +1733,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -1753,7 +1753,7 @@ TRUE
 2
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -1793,7 +1793,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -1873,7 +1873,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -1893,7 +1893,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -1933,7 +1933,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -1973,7 +1973,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2033,7 +2033,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2053,7 +2053,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2073,7 +2073,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2157,23 +2157,23 @@ TRUE
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #FFCCCC !important;">
+<td style="text-align:left;">
 1563-1564-1566-1575-1579
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
-4035
+<td style="text-align:right;">
+5148
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
+<td style="text-align:right;">
 5
 </td>
-<td style="text-align:left;background-color: #FFCCCC !important;">
-FALSE
+<td style="text-align:left;">
+TRUE
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
-4030
+<td style="text-align:right;">
+5143
 </td>
-<td style="text-align:left;background-color: #FFCCCC !important;">
-<a href="psi4-comp-1563-1564-1566-1575-1579-nov6.png" style="     ">img</a>
+<td style="text-align:left;">
+<a href="psi4-comp-1563-1564-1566-1575-1579.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2193,7 +2193,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2213,7 +2213,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2233,7 +2233,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2273,7 +2273,7 @@ TRUE
 3
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2293,7 +2293,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2313,7 +2313,7 @@ TRUE
 2
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2353,7 +2353,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2393,7 +2393,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2413,7 +2413,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2433,7 +2433,7 @@ TRUE
 3
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2453,7 +2453,7 @@ TRUE
 3
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2473,7 +2473,7 @@ TRUE
 2
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2493,7 +2493,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2513,7 +2513,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2533,7 +2533,7 @@ TRUE
 2
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2553,7 +2553,7 @@ TRUE
 2
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2573,7 +2573,7 @@ TRUE
 2
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2593,7 +2593,7 @@ TRUE
 2
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2613,7 +2613,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2633,7 +2633,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2653,7 +2653,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2713,7 +2713,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2733,7 +2733,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2773,7 +2773,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2793,7 +2793,7 @@ TRUE
 3
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2853,7 +2853,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2873,7 +2873,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2893,7 +2893,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2913,7 +2913,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2933,7 +2933,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -2973,7 +2973,7 @@ TRUE
 4
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -3013,7 +3013,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -3033,7 +3033,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -3073,7 +3073,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -3093,7 +3093,7 @@ TRUE
 2
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -3113,7 +3113,7 @@ TRUE
 2
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -3133,7 +3133,7 @@ TRUE
 2
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -3153,7 +3153,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -3173,7 +3173,7 @@ TRUE
 2
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -3193,7 +3193,7 @@ TRUE
 2
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -3213,7 +3213,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -3233,7 +3233,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -3253,7 +3253,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -3273,7 +3273,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -3293,7 +3293,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -3313,7 +3313,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -3333,7 +3333,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -3353,7 +3353,7 @@ TRUE
 2
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -3373,7 +3373,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -3397,23 +3397,23 @@ TRUE
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #FFCCCC !important;">
+<td style="text-align:left;">
 1750-1751-1752
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
-2557
+<td style="text-align:right;">
+3210
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
+<td style="text-align:right;">
 3
 </td>
-<td style="text-align:left;background-color: #FFCCCC !important;">
-FALSE
+<td style="text-align:left;">
+TRUE
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
-2554
+<td style="text-align:right;">
+3207
 </td>
-<td style="text-align:left;background-color: #FFCCCC !important;">
-<a href="psi4-comp-1750-1751-1752-nov6.png" style="     ">img</a>
+<td style="text-align:left;">
+<a href="psi4-comp-1750-1751-1752.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -3433,7 +3433,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -3453,7 +3453,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -3473,7 +3473,7 @@ TRUE
 1
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -3493,7 +3493,7 @@ TRUE
 2
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -3513,7 +3513,7 @@ TRUE
 2
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 <tr>
@@ -3533,7 +3533,7 @@ TRUE
 2
 </td>
 <td style="text-align:left;">
-<a href="psi4-concomps-v1only.png" style="     ">img</a>
+<a href="../data/paramod/psi4/psi4-concomps-v1only.png" style="     ">img</a>
 </td>
 </tr>
 </tbody>
@@ -3549,8 +3549,6 @@ TRUE
 <th></th>
 <th>1-8-etc</th>
 <th>70-1629-etc</th>
-<th>1563-1564-1566-1575-1579</th>
-<th>1750-1751-1752</th>
 </tr>
 </thead>
 <tbody>
@@ -3558,27 +3556,9 @@ TRUE
 <td>1-8-etc</td>
 <td>X</td>
 <td>F</td>
-<td>F</td>
-<td>F</td>
 </tr>
 <tr class="even">
 <td>70-1629-etc</td>
-<td></td>
-<td>X</td>
-<td>F</td>
-<td>F</td>
-</tr>
-<tr class="odd">
-<td>1563-1564-1566-1575-1579</td>
-<td></td>
-<td></td>
-<td>X</td>
-<td>F</td>
-</tr>
-<tr class="even">
-<td>1750-1751-1752</td>
-<td></td>
-<td></td>
 <td></td>
 <td>X</td>
 </tr>
@@ -8314,62 +8294,62 @@ NA
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #FFCCCC !important;">
+<td style="text-align:left;">
 1563-1564-1566-1575-1579
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
+<td style="text-align:right;">
 5
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
+<td style="text-align:right;">
 35
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
+<td style="text-align:right;">
 137
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
+<td style="text-align:right;">
 329
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
+<td style="text-align:right;">
 800
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
+<td style="text-align:right;">
 1311
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
+<td style="text-align:right;">
 1418
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
-NA
+<td style="text-align:right;">
+798
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
-NA
+<td style="text-align:right;">
+294
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
-NA
+<td style="text-align:right;">
+21
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
-NA
+<td style="text-align:right;">
+0
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
-NA
+<td style="text-align:right;">
+0
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
-NA
+<td style="text-align:right;">
+0
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
-NA
+<td style="text-align:right;">
+0
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
-NA
+<td style="text-align:right;">
+0
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
-NA
+<td style="text-align:right;">
+0
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
-NA
+<td style="text-align:right;">
+0
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
-NA
+<td style="text-align:right;">
+0
 </td>
 </tr>
 <tr>
@@ -11972,62 +11952,62 @@ NA
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #FFCCCC !important;">
+<td style="text-align:left;">
 1750-1751-1752
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
+<td style="text-align:right;">
 3
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
+<td style="text-align:right;">
 8
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
+<td style="text-align:right;">
 40
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
+<td style="text-align:right;">
 168
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
+<td style="text-align:right;">
 518
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
+<td style="text-align:right;">
 880
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
+<td style="text-align:right;">
 940
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
-NA
+<td style="text-align:right;">
+516
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
-NA
+<td style="text-align:right;">
+135
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
-NA
+<td style="text-align:right;">
+2
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
-NA
+<td style="text-align:right;">
+0
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
-NA
+<td style="text-align:right;">
+0
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
-NA
+<td style="text-align:right;">
+0
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
-NA
+<td style="text-align:right;">
+0
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
-NA
+<td style="text-align:right;">
+0
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
-NA
+<td style="text-align:right;">
+0
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
-NA
+<td style="text-align:right;">
+0
 </td>
-<td style="text-align:right;background-color: #FFCCCC !important;">
-NA
+<td style="text-align:right;">
+0
 </td>
 </tr>
 <tr>
@@ -12391,7 +12371,7 @@ NA
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>For a previous version (2020-04-17) click <a href="../unitals-20200417">here</a><a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn1"><p>For a previous version (2020-05-27) click <a href="../unitals-20200527">here</a><a href="#fnref1" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 
